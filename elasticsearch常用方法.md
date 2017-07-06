@@ -20,20 +20,20 @@ _index/_type/_type
 ```
 
 
-###增加
+### 增加
 
 新增加一个文件的索引可以使用两种方法，一种是`PUT`方法，该方法却要确定的`index,type,id`；另外一个是`POST`方法，该方法只需要确定的`index,type`，系统会为文件自动分配一个不重复的自增长的uuid。
 
 
 
-###删除
+### 删除
 
 删除一个已有的检索，使用`DELETE`方法，`DELETE /index/type/id`，如果正常删除，则返回一个`200 OK`状态码，如果未正常删除，则返回`404 Not Found`状态码
 
 
 
 
-###检索
+### 检索
 
 * 查看所有的索引     
 `curl 'http://localhost:9200/_cat/indices?v'`    
@@ -50,7 +50,7 @@ _index/_type/_type
 
 
 
-###修改
+### 修改
 文档在elasticsearch是不可变的，我们只能重建索引的方法去修改一个文件。
     
 如何确定创建的索引文档是新建还是覆盖一个已经存在的，最好的方法是使用`POST /index/type`在类下自动生成一个唯一的id来生成一个索引。    
@@ -66,11 +66,11 @@ _index/_type/_type
 elacsticsearch提供了一个`updata`方法来进行文档的局部更新。`POST '/index/type/id/_update'  -d  '{"doc":{具体内容}}'`进行更新。
 
 
-###批量检索
+### 批量检索
 
 elasticsearch系统提供了一个批量检索的方法`mget`,它所需要的参数为一个`docs`数组，该数组中包括具体的`_index`,`_type`,`id`;如果需要在特定的`index`下进行查找，可以在url中指定`/index/_mget`，同理特定的`type`
 
-###批量操作
+### 批量操作
 
 elasticsearch提供了一个批量操作`bulk`来实现批量的`create`,`index`,`update`或者`delete`。具体的实现格式如下：
 
